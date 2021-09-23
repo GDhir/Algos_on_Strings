@@ -5,6 +5,41 @@
 #include <vector>
 #include <queue>
 
+/* Create a suffix tree given a string text. "$" sign is required at the end of the input string
+    for the algorithm to work correctly.
+
+    Return all the edges of the suffix tree. For example:
+    Input:
+    ATAAATG$
+
+    Output:
+    AAATG$
+    G$
+    T
+    ATG$
+    TG$
+    A
+    A
+    AAATG$
+    G$
+    T
+    G$
+    $
+
+    The algorithm is a bit complex but memory efficient. It iteratively updates and breaks the edges in the tree to 
+    add new edges for the new suffixes. 
+
+    It first tries to match the suffix with the existing edges in the tree. As soon as it finds an edge
+    where a match occurs, it breaks that edge and creates a new edge to accommodate for the new suffix. 
+    If no edge is matched for a particular node in the tree, it simply creates a new edge with a new node 
+    from the existing node.
+
+    Within the tree, each edge is represented as a hash table. The hash table has pair of integers
+    representing edges as keys and the next node as the value. The pair of integers correspond to
+    the positions in text string which it represents.
+*/
+
+
 using std::cin;
 using std::cout;
 using std::endl;
